@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <h2 class="title">Dota2 Timer Reminder</h2>
-  </div>
+
 </template>
 
 <script setup lang="ts">
 </script>
 
 <style scoped>
+
 </style>
