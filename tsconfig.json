@@ -8,15 +8,7 @@
     "strict": true,
     "esModuleInterop": true,
     "sourceMap": true,
-    "baseUrl": "./",
-    "paths": {
-      "src/*": [
-        "src/*"
-      ],
-      "test/*": [
-        "tests/*"
-      ]
-    }
+    "baseUrl": "./"
   },
   "include": [
     "src/**/*"
