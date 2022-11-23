@@ -7,10 +7,10 @@ describe('Timing component functional test', () => {
 	it('should broadcast game started', () => {
 		const wrapper = mount(Timing, {
 			props: {
-				now: 0
+				now: '00:00'
 			}
 		})
 		const timer = wrapper.find('.timer')
-		expect(timer.text()).toEqual('00')
+		expect(timer.text()).toEqual('00:00')
 	})
 })

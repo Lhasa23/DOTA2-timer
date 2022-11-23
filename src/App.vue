@@ -3,9 +3,15 @@
     <h2 class="title">Dota2 Timer Reminder</h2>
 
     <template v-if="!timing">
-      <input type="number" class="now" :value="now" />
+      <section class="stopping">
+        <section class="time-zone">
+          <input type="checkbox" v-model="minus" :value="true">before start
+          <input type="number" class="minute" :min="0" v-model="minute" />
+          <input type="number" class="second" :min="0" :max="59" v-model="second" />
+        </section>
 
-      <button class="start" @click="toggleTimingStatus(true)">Start</button>
+        <button class="start" @click="toggleTimingStatus(true)">Start</button>
+      </section>
     </template>
     <template v-else>
       <Timing :now="now" />
@@ -16,11 +22,16 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
+import { computed, ref } from 'vue'
 import Timing from 'src/components/Timing.vue'
+import timeFormat from './utils/timeFormat'
 
-const now = ref(0)
+const minus = ref(false)
+const minute = ref(0)
+const second = ref(0)
 const timing = ref(false)
+
+const now = computed(() => `${timeFormat(minute.value)}:${timeFormat(second.value)}`)
 
 const toggleTimingStatus = (status: boolean) => {
   timing.value = status
@@ -28,4 +39,10 @@ const toggleTimingStatus = (status: boolean) => {
 </script>
 
 <style scoped>
+.stopping {
+  margin: 0 auto;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+}
 </style>
