@@ -6,13 +6,27 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
+import utils from '../utils/utils'
+
+const secondMap = (): string => {
+  switch (second.value) {
+    case '00':
+      return '比赛开始'
+    case '20':
+      return '还有十秒出兵'
+    case '50':
+      return '出兵囤野'
+    default:
+      return ''
+  }
+}
 
 const props = defineProps<{
   now: string
 }>()
 
 onMounted(() => {
-  speak()
+  playSecondContent()
 })
 
 const timing = ref(props.now)
@@ -20,14 +34,8 @@ const timing = ref(props.now)
 const minute = computed(() => timing.value.split(':')[0])
 const second = computed(() => timing.value.split(':')[1])
 
-const speech = ref(window.speechSynthesis)
-const chineseVoice = computed(() => speech.value.getVoices().find((value) => value.lang === 'zh-CN'))
-
-const speak = () => {
-  let u = new window.SpeechSynthesisUtterance()
-  u.voice = chineseVoice.value
-  u.text = '请帮帮我'
-  speech.value.speak(u)
+const playSecondContent = () => {
+  utils.speechContent(secondMap())
 }
 </script>
 

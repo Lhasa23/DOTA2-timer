@@ -1,10 +1,10 @@
-import { describe, it, expect } from 'vitest'
-import timeFormat from 'src/utils/timeFormat'
+import { describe, it, expect, vi } from 'vitest'
+import utils from 'src/utils/utils'
 
 describe('utils test', () => {
 	it('should output correct bit time', () => {
-		expect(timeFormat(0)).toEqual('00')
-		expect(timeFormat(10)).toEqual('10')
-		expect(timeFormat(9)).toEqual('09')
+		expect(utils.timeFormat(0)).toEqual('00')
+		expect(utils.timeFormat(10)).toEqual('10')
+		expect(utils.timeFormat(9)).toEqual('09')
 	})
 })

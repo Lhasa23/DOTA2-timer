@@ -24,14 +24,14 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import Timing from 'src/components/Timing.vue'
-import timeFormat from './utils/timeFormat'
+import utils from './utils/utils'
 
 const minus = ref(false)
 const minute = ref(0)
 const second = ref(0)
 const timing = ref(false)
 
-const now = computed(() => `${timeFormat(minute.value)}:${timeFormat(second.value)}`)
+const now = computed(() => `${utils.timeFormat(minute.value)}:${utils.timeFormat(second.value)}`)
 
 const toggleTimingStatus = (status: boolean) => {
   timing.value = status
