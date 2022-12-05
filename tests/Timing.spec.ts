@@ -10,7 +10,8 @@ describe('Timing component functional test', () => {
 	it('should broadcast game started', () => {
 		const wrapper = mount(Timing, {
 			props: {
-				now: '00:00'
+				minute: 0,
+				second: 0
 			}
 		})
 		const timer = wrapper.find('.timer')
@@ -22,7 +23,8 @@ describe('Timing component functional test', () => {
 
 		const wrapper = mount(Timing, {
 			props: {
-				now: '00:20'
+				minute: 0,
+				second: 20
 			}
 		})
 
